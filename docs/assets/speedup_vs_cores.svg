@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <rect width="760" height="400" rx="12" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="380" y="38" text-anchor="middle" font-size="18" font-weight="700" fill="#111827">Relative Speedup vs. 1-Core Baseline</text>
+  <text x="380" y="58" text-anchor="middle" font-size="12" fill="#6b7280">Speedup S(p) = T(1) / T(p) with T(1) = 7.105s on sample_hpc_rag.log</text>
+
+  <!-- Gridlines (Y: 0.0 to 1.2; plot area: x=90..700, y=85..325 -> height=240, 200px per 1.0x) -->
+  <g stroke="#e5e7eb" stroke-dasharray="4 4" stroke-width="1">
+    <line x1="90" y1="85" x2="700" y2="85"/>
+    <line x1="90" y1="165" x2="700" y2="165"/>
+    <line x1="90" y1="205" x2="700" y2="205"/>
+    <line x1="90" y1="245" x2="700" y2="245"/>
+    <line x1="90" y1="285" x2="700" y2="285"/>
+  </g>
+  <!-- 1.0x reference line (y = 325 - 200 = 125) -->
+  <line x1="90" y1="125" x2="700" y2="125" stroke="#0f766e" stroke-dasharray="6 4" stroke-width="1.8"/>
+
+  <!-- Axes -->
+  <line x1="90" y1="85" x2="90" y2="325" stroke="#374151" stroke-width="1.5"/>
+  <line x1="90" y1="325" x2="700" y2="325" stroke="#374151" stroke-width="1.5"/>
+
+  <!-- Y-axis labels -->
+  <g font-size="12" fill="#4b5563" text-anchor="end">
+    <text x="80" y="89">1.2x</text>
+    <text x="80" y="129">1.0x</text>
+    <text x="80" y="169">0.8x</text>
+    <text x="80" y="209">0.6x</text>
+    <text x="80" y="249">0.4x</text>
+    <text x="80" y="289">0.2x</text>
+    <text x="80" y="329">0.0x</text>
+  </g>
+  <text x="26" y="205" text-anchor="middle" font-size="13" font-weight="600" fill="#374151" transform="rotate(-90 26 205)">Speedup (T₁ / Tₚ)</text>
+
+  <!-- X-axis labels -->
+  <g font-size="12" fill="#4b5563" text-anchor="middle">
+    <text x="140" y="346">1</text>
+    <text x="220" y="346">2</text>
+    <text x="380" y="346">4</text>
+    <text x="660" y="346">8</text>
+  </g>
+  <text x="395" y="376" text-anchor="middle" font-size="13" font-weight="600" fill="#374151">Number of Local Spark Cores</text>
+
+  <!-- Legend -->
+  <g font-size="11.5" fill="#374151">
+    <line x1="510" y1="98" x2="538" y2="98" stroke="#dc2626" stroke-width="3"/>
+    <circle cx="524" cy="98" r="4" fill="#dc2626"/>
+    <text x="546" y="102">Measured speedup</text>
+    <line x1="510" y1="115" x2="538" y2="115" stroke="#0f766e" stroke-dasharray="6 4" stroke-width="1.8"/>
+    <text x="546" y="119">Baseline (1.0x)</text>
+  </g>
+
+  <!-- Line (y = 325 - val*200): 1.00->125, 0.86->153, 0.72->181, 0.48->229 -->
+  <polyline fill="none" stroke="#dc2626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+            points="140,125 220,153 380,181 660,229"/>
+
+  <!-- Data points & labels -->
+  <g fill="#dc2626" stroke="#ffffff" stroke-width="2.5">
+    <circle cx="140" cy="125" r="6"/>
+    <circle cx="220" cy="153" r="6"/>
+    <circle cx="380" cy="181" r="6"/>
+    <circle cx="660" cy="229" r="6"/>
+  </g>
+  <g font-size="12" font-weight="700" fill="#991b1b" text-anchor="middle">
+    <text x="140" y="112">1.00x</text>
+    <text x="220" y="140">0.86x</text>
+    <text x="380" y="168">0.72x</text>
+    <text x="660" y="216">0.48x</text>
+  </g>
+</svg>

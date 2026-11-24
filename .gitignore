@@ -1,0 +1,32 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Packaging & build artifacts
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Spark & Derby runtime artifacts
+spark-warehouse/
+metastore_db/
+derby.log
+
+# Testing & coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# OS & editor metadata
+.DS_Store
+.vscode/
+.idea/
+*.swp
