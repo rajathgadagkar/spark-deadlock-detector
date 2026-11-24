@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  unit-tests:
+    name: Pure-Python Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Syntax check & unit tests
+        run: |
+          python3 -m py_compile main.py deadlock_detector/*.py tests/*.py
+          python3 -m unittest tests/test_core.py -v
+
+  spark-integration-tests:
+    name: PySpark End-to-End Integration Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Java 11 (Temurin)
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "11"
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Install PySpark
+        run: pip install -r requirements.txt
+
+      - name: Run PySpark end-to-end tests
+        run: python3 -m unittest tests/test_spark_e2e.py -v
+
+      - name: Smoke-test spark-submit CLI
+        run: spark-submit main.py data/sample_hpc_rag.log 2 --pretty
